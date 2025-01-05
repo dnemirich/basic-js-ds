@@ -37,9 +37,26 @@ class BinarySearchTree {
     }
   }
 
-  has(data) { }
+  has(data) {
+    return this.find(data) !== null;
+  }
 
-  find(data) { }
+  find(data) {
+    const findVal = (data, node) => {
+      if (!node) return null;
+      if (data === node.data) return node;
+
+      if (data > node.data) {
+        return findVal(data, node.right);
+      } else if (data < node.data) {
+        return findVal(data, node.left);
+      }
+    };
+
+    if (this.rootNode.data === data) {
+      return this.rootNode;
+    } else return findVal(data, this.rootNode);
+  }
 
   remove(data) { }
 
