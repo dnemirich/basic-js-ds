@@ -43,9 +43,27 @@ class BinarySearchTree {
 
   remove(data) { }
 
-  min() { }
+  min() {
+    const findMin = (node) => {
+      if (node.left) {
+        return findMin(node.left);
+      }
+      return node.data;
+    };
 
-  max() { }
+    return this.rootNode ? findMin(this.rootNode) : null;
+  }
+
+  max() {
+    const findMax = (node) => {
+      if (node.right) {
+        return findMax(node.right);
+      }
+      return node.data;
+    };
+
+    return this.rootNode ? findMax(this.rootNode) : null;
+  }
 }
 
 module.exports = {
